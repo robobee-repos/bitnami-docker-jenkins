@@ -1,0 +1,91 @@
+plugins:
+  - artifactId: configuration-as-code
+    source:
+      version: 1346.ve8cfa_3473c94
+  - artifactId: kubernetes
+    source:
+      version: 1.31.3
+  - artifactId: gitea
+    source:
+      version: 1.4.1
+  - artifactId: role-strategy
+    source:
+      version: 3.2.0
+  - artifactId: bootstrap5-api
+    source:
+      version: 5.1.3-4
+  - artifactId: command-launcher
+    source:
+      version: 1.6
+  - artifactId: docker-commons
+    source:
+      version: 1.19
+  - artifactId: docker-workflow
+    source:
+      version: 1.28
+  - artifactId: echarts-api
+    source:
+      version: 5.2.2-2
+  - artifactId: email-ext
+    source:
+      version: 2.87
+  - artifactId: external-monitor-job
+    source:
+      version: 191.v363d0d1efdf8
+  - artifactId: font-awesome-api
+    source:
+      version: 5.15.4-5
+  - artifactId: jackson2-api
+    source:
+      version: 2.13.1-246.va8a9f3eaf46a
+  - artifactId: jaxb
+    source:
+      version: 2.3.0.1
+  - artifactId: matrix-auth
+    source:
+      version: 3.0.1
+  - artifactId: pam-auth
+    source:
+      version: 1.7
+  - artifactId: workflow-api
+    source:
+      version: 1136.v7f5f1759dc16
+  - artifactId: pipeline-model-definition
+    source:
+      version: 1.9.3
+  - artifactId: pipeline-model-extensions
+    source:
+      version: 1.9.3
+  - artifactId: pipeline-github-lib
+    source:
+      version: 36.v4c01db_ca_ed16
+  - artifactId: workflow-job
+    source:
+      version: 1145.v7f2433caa07f
+  - artifactId: pipeline-model-api
+    source:
+      version: 1.9.3
+  - artifactId: workflow-durable-task-step
+    source:
+      version: 1121.va_65b_d2701486
+  - artifactId: pipeline-rest-api
+    source:
+      version: 2.21
+  - artifactId: pipeline-stage-tags-metadata
+    source:
+      version: 1.9.3
+  - artifactId: pipeline-stage-view
+    source:
+      version: 2.21
+  - artifactId: plain-credentials
+    source:
+      version: 1.8
+  - artifactId: plugin-util-api
+    source:
+      version: 2.13.0
+  - artifactId: swarm
+    source:
+      version: 3.30
+  - artifactId: timestamper
+    source:
+      version: 1.17
