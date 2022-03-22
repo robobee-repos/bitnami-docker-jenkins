@@ -47,9 +47,6 @@ plugins:
   - artifactId: pam-auth
     source:
       version: 1.7
-  - artifactId: workflow-api
-    source:
-      version: 1136.v7f5f1759dc16
   - artifactId: pipeline-model-definition
     source:
       version: 1.9.3
