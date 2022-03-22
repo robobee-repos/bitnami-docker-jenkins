@@ -1,7 +1,8 @@
-REPOSITORY := robobeerun
-NAME := bitnami-jenkins
-VERSION ?= 2.319.2-debian-10-r13-r1
 BASE := .
+
+.PHONY: info
+info: ##@targets Shows the the docker image name.
+	$(MAKE) -C 2/debian-10 $@
 
 .PHONY: build
 build: ##@targets Builds the docker image.
@@ -15,18 +16,16 @@ clean: ##@targets Removes the local docker image.
 deploy: ##@targets Deploys the docker image to the repository.
 	$(MAKE) -C 2/debian-10 $@ 
 
-.PHONY: test_up
-test_up: ##@targets Starts the application for a test.
+.PHONY: test-up
+test-up: ##@targets Starts the application for a test.
 	$(MAKE) -C 2/debian-10 $@ 
 
-.PHONY: test_down
-test_down: ##@targets Stops the test application.
+.PHONY: test-down
+test-down: ##@targets Stops the test application.
 	$(MAKE) -C 2/debian-10 $@ 
 
-.PHONY: test_down_volumes
-test_down_volumes: ##@targets Stops the test application and removes all named volumes.
+.PHONY: test-down-volumes
+test-down-volumes: ##@targets Stops the test application and removes all named volumes.
 	$(MAKE) -C 2/debian-10 $@ 
 
 include $(BASE)/utils/Makefile.help
-include $(BASE)/utils/Makefile.functions
-include $(BASE)/utils/Makefile.image

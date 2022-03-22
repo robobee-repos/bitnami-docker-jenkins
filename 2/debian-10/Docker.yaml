@@ -1,0 +1,4 @@
+repository: robobeerun
+type:
+version: 2.332.1-debian-10-r10-r1
+name: bitnami-jenkins
