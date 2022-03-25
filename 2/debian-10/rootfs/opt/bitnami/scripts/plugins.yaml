@@ -1,10 +1,13 @@
 plugins:
   - artifactId: configuration-as-code
     source:
-      version: 1346.ve8cfa_3473c94
+      version: 1414.v878271fc496f
+  - artifactId: github-branch-source
+    source:
+      version: 1583.v18d333ef7379
   - artifactId: kubernetes
     source:
-      version: 1.31.3
+      version: 3568.vde94f6b_41b_c8
   - artifactId: gitea
     source:
       version: 1.4.1
@@ -37,40 +40,40 @@ plugins:
       version: 5.15.4-5
   - artifactId: jackson2-api
     source:
-      version: 2.13.1-246.va8a9f3eaf46a
+      version: 2.13.2-260.v43d711474c77
   - artifactId: jaxb
     source:
       version: 2.3.0.1
   - artifactId: matrix-auth
     source:
-      version: 3.0.1
+      version: 3.1
   - artifactId: pam-auth
     source:
       version: 1.7
   - artifactId: pipeline-model-definition
     source:
-      version: 1.9.3
+      version: 2.2064.v5eef7d0982b_e
   - artifactId: pipeline-model-extensions
     source:
-      version: 1.9.3
+      version: 2.2064.v5eef7d0982b_e
   - artifactId: pipeline-github-lib
     source:
       version: 36.v4c01db_ca_ed16
   - artifactId: workflow-job
     source:
-      version: 1145.v7f2433caa07f
+      version: 1174.vdcb_d054cf74a_
   - artifactId: pipeline-model-api
     source:
-      version: 1.9.3
+      version: 2.2064.v5eef7d0982b_e
   - artifactId: workflow-durable-task-step
     source:
-      version: 1121.va_65b_d2701486
+      version: 1128.v8c259d125340
   - artifactId: pipeline-rest-api
     source:
       version: 2.21
   - artifactId: pipeline-stage-tags-metadata
     source:
-      version: 1.9.3
+      version: 2.2064.v5eef7d0982b_e
   - artifactId: pipeline-stage-view
     source:
       version: 2.21
@@ -79,10 +82,16 @@ plugins:
       version: 1.8
   - artifactId: plugin-util-api
     source:
-      version: 2.13.0
+      version: 2.15.0
   - artifactId: swarm
     source:
-      version: 3.30
+      version: 3.32
   - artifactId: timestamper
     source:
       version: 1.17
+  - artifactId: subversion
+    source:
+      version: 2.15.3
+  - artifactId: token-macro
+    source:
+      version: 285.vff7645a_56ff0
