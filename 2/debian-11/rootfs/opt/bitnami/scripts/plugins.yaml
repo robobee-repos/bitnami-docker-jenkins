@@ -40,6 +40,3 @@ plugins:
   - artifactId: lockable-resources
     source:
       version: 2.16
-  - artifactId: github
-    source:
-      version: 1.35.0
