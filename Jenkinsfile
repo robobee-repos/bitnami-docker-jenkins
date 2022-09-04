@@ -11,9 +11,9 @@ def harborLink = "https://harbor.anrisoftware.com/harbor/projects/2/repositories
 
 def imageName = "bitnami-docker-jenkins-2.346.2-debian-11-r6"
 def imageVersion = "1.1.0"
-def imageVersionSnapshot = "${imageVersion}-snapshot"
+def imageVersionSnapshot = "${imageVersion}-SNAPSHOT"
 def destination = "${registryHost}/${registryName}/${imageName}:${imageVersion}"
-def destinationSnapshot = "${destination}-snapshot"
+def destinationSnapshot = "${destination}-SNAPSHOT"
 def currentTag
 def currentVersion
 
