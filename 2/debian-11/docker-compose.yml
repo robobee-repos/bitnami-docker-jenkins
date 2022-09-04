@@ -2,13 +2,17 @@ version: '2'
 
 services:
   jenkins:
-    image: docker.io/bitnami/jenkins:2
+    #command: ["sleep", "1h"]
+    image: ${REPOSITORY}/${NAME}:${VERSION}
     ports:
       - '80:8080'
     environment:
       - JENKINS_PASSWORD=bitnami
+      - JAVA_OPTS=-Xms512M -Xmx512M
+      - BITNAMI_DEBUG=true
     volumes:
       - 'jenkins_data:/bitnami/jenkins'
+      - './jenkins.yaml:/bitnami/jenkins/jenkins.yaml'
 
 volumes:
   jenkins_data:

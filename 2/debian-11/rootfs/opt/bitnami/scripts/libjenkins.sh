@@ -53,7 +53,7 @@ is_jenkins_not_running() {
 jenkins_stop() {
     is_jenkins_not_running && return
     info "Stopping Jenkins"
-    stop_service_using_pid "$JENKINS_PID_FILE"
+    stop_service_using_pid "$JENKINS_PID_FILE" 15
 }
 
 ########################
@@ -168,7 +168,7 @@ jenkins_validate() {
     check_conflicting_ports "JENKINS_HTTP_PORT_NUMBER" "JENKINS_HTTPS_PORT_NUMBER" "JENKINS_JNLP_PORT_NUMBER"
 
     # Validate host
-    check_yes_no_value "JENKINS_ENABLE_HTTPS"
+    check_yes_no_value "JENKINS_FORCE_HTTPS"
     if ! is_empty_value "$JENKINS_HOST"; then
         check_resolved_hostname "$JENKINS_HOST"
         [[ "$JENKINS_HOST" =~ localhost ]] && print_validation_error "JENKINS_HOST must be set to an actual hostname, localhost values are not allowed."
@@ -228,6 +228,8 @@ jenkins_initialize() {
             ! is_empty_value "$JENKINS_HOST" && jenkins_configure_host "$JENKINS_HOST"
             # Rotate the logs in Jenkins to clean the Jenkins warnings before actually configuring the app
             jenkins_stop
+            # Generate jenkins.jks
+            "${JAVA_HOME}/bin/keytool" -genkey -keypass "${JENKINS_KEYSTORE_PASSWORD}" -storepass "${JENKINS_KEYSTORE_PASSWORD}" -keystore "${JENKINS_HOME}/jenkins.jks" -dname "CN=${JENKINS_HOST}, O=${JENKINS_HOST}" -alias "${JENKINS_HOST}"
             mv "$JENKINS_LOG_FILE" "${JENKINS_LOGS_DIR}/jenkins.firstboot.log"
             rm "${JENKINS_HOME}/init.groovy.d/init-jenkins.groovy"
         else
@@ -258,9 +260,9 @@ jenkins_configure_host() {
     local base_url
     local scheme
 
-    is_boolean_yes "$JENKINS_ENABLE_HTTPS" && scheme="https" || scheme="http"
+    is_boolean_yes "$JENKINS_FORCE_HTTPS" && scheme="https" || scheme="http"
     base_url="${scheme}://${hostname}"
-    if is_boolean_yes "$JENKINS_ENABLE_HTTPS"; then
+    if is_boolean_yes "$JENKINS_FORCE_HTTPS"; then
         [[ "$JENKINS_EXTERNAL_HTTPS_PORT_NUMBER" != "443" ]] && base_url+=":${JENKINS_EXTERNAL_HTTPS_PORT_NUMBER}"
     else
         [[ "$JENKINS_EXTERNAL_HTTP_PORT_NUMBER" != "80" ]] && base_url+=":${JENKINS_EXTERNAL_HTTP_PORT_NUMBER}"
