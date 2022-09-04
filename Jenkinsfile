@@ -65,7 +65,7 @@ pipeline {
         stage("Build") {
             steps {
                 container(name: "buildah") {
-                    sh "sed -ie 's!^FROM .*!FROM ${fromImage}!g' `pwd`/Dockerfile && buildah build --storage-driver vfs --no-cache -f Dockerfile --tag ${currentTag} `pwd`/2/debian-11"
+                    sh "sed -ie 's!^FROM .*!FROM ${fromImage}!g' `pwd`/2/debian-11/Dockerfile && buildah build --storage-driver vfs --no-cache -f Dockerfile --tag ${currentTag} `pwd`/2/debian-11"
                 }
             }
         }
