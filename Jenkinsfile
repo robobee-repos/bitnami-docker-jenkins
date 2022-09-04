@@ -14,6 +14,7 @@ def imageVersion = "1.1.0"
 def imageVersionSnapshot = "${imageVersion}-SNAPSHOT"
 def destination = "${registryHost}/${registryName}/${imageName}:${imageVersion}"
 def destinationSnapshot = "${destination}-SNAPSHOT"
+def fromImage = "${registryHost}/proxycache/bitnami/minideb:bullseye"
 def currentTag
 def currentVersion
 
@@ -64,7 +65,7 @@ pipeline {
         stage("Build") {
             steps {
                 container(name: "buildah") {
-                    sh "buildah build --storage-driver vfs --no-cache -f Dockerfile --tag ${currentTag} `pwd`/2/debian-11"
+                    sh "sed -ie 's!^FROM .*!FROM ${fromImage}!g' `pwd`/Dockerfile && buildah build --storage-driver vfs --no-cache -f Dockerfile --tag ${currentTag} `pwd`/2/debian-11"
                 }
             }
         }
